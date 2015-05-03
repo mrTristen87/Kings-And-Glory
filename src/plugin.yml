@@ -1,3 +1,9 @@
-name: Test
-main: KingsAndGlory
-version: 0.1
+name: RpRoll
+main: kingsAndGlory.RpRoll
+version: 0.3
+commands:
+   roll:
+      description: Rolls a number
+      usage: /roll [number]
+      #permission: RpRoll.roll
+      #permission-message: You don't have RpRoll.roll
