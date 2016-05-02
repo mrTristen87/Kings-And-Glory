@@ -36,29 +36,27 @@ public final class RpRoll extends JavaPlugin {
 	        getLogger().info("Rp Roll has been disabled");
 	    }
 	    
-	    public String[2] roll(int limit, String ogModifier){
+	    public String[] roll(int limit, String ogModifier){
 	    	
 	    			int ogRolled = (int)(Math.random()*limit); 	//orignal rolled value
 	    			int modifier = 0; 						//original modifier is 0
 	    			int finalRolled;
 
-	    			if (modifier != null){						//check for a modifier
+	    			if (ogModifier != null){						//check for a modifier
 	    				String cleanedmod = "";
-	    				if (ogModifier.contains('+')){
-	    					cleanedmod = ogModifier.replace('+',''); 		//take plus sign out of value so number can be isolated
+	    				if (ogModifier.contains("+")){
+	    					cleanedmod = ogModifier.replace('+','0'); 		//take plus sign out of value so number can be isolated
 	    					modifier = Integer.parseInt(cleanedmod);
 	    				}
-	    				if (args[2].contains('-')){
-	    					cleanedmod = ogModifier.replace('-','');
-	    					modifier = -1*Integer.parseInt(cleandedmod);
+	    				if (ogModifier.contains("-")){
+	    					cleanedmod = ogModifier.replace('-','0');
+	    					modifier = -1*Integer.parseInt(cleanedmod);
 	    				}
 	    			
 	    				
 	    			}
 	    			finalRolled = ogRolled + modifier;
-	    			
-	    			
-	    			return [finalRolled,modifier]; //final rolled is set out of a
+	    			return new String[] {Integer.toString(finalRolled),Integer.toString(modifier)}; //final rolled is set out of a
 	    	
 	    }
 	
@@ -66,21 +64,21 @@ public final class RpRoll extends JavaPlugin {
 	    
 	    	
 	    	if (cmd.getName().equalsIgnoreCase("roll")) {//if command is typed. 
-	    		String[] result;
-	    		if (args.length = 0){
+	    		String[] result = null;
+	    		if (args.length == 0){
 	    			result = roll(20, null);
-	    			sender.sendMessage(sender.getName() + "rolled a" + result[0] " out of 20");
+	    			sender.sendMessage("§a"+sender.getName() + " §erolled a §a" + result[0] + " out of 20");
 	    		
 	    		}
 	    		
-	    		if (args.length == 1)
-	    			result = roll(Integer.parseInt(args[0], null);
-	    			sender.sendMessage(sender.getName() + "rolled a" + result[0] + " out of " + args[0]);
-	    		
+	    		if (args.length == 1){
+	    			result = roll(Integer.parseInt(args[0]), null);
+	    			sender.sendMessage("§a"+sender.getName() + " §erolled a §a" + result[0] + " out of " + args[0]);
+	    		}
 	    		
 	    		if (args.length == 2){
-	    			result = roll(Integer.parseInt(args[0], args[1]);
-	    			sender.sendMessage(sender.getName() + "rolled a" + result[0] + " out of " + args[0] + " with a modifier of " + args[1]);
+	    			result = roll(Integer.parseInt(args[0]), args[1]);
+	    			sender.sendMessage("§a"+sender.getName() + " §erolled a §a" + result[0] + " out of " + args[0] + " with a modifier of " + args[1]);
 	    		}
 	    			    		// doSomething
 	    		return true;

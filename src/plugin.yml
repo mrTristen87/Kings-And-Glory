@@ -1,9 +1,13 @@
 name: RpRoll
 main: kingsAndGlory.RpRoll
-version: 0.3
+version: 0.4.3
+author: Christian A (Mr. Frog)
 commands:
    roll:
-      description: Rolls a number
-      usage: /roll [number]
+      description: Rolls a psuedo-random number, with or without a modifier.
+      usage: |
+        /roll <number> [modifier]
+        Example: /roll 15 +4
+        Example: /roll 8 -3
       #permission: RpRoll.roll
       #permission-message: You don't have RpRoll.roll
