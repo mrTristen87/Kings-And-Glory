@@ -1,8 +1,11 @@
 package kingsAndGlory;
 
+
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.Server;
 
 
 
@@ -28,8 +31,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 	    	*/
 
 public final class RpRoll extends JavaPlugin {
+	  Server server = null;
 	  public void onEnable() {
 		  getLogger().info("Rp Roll has been enabled.");
+		  server = getServer();
 	    }
 	 
 	    public void onDisable() {
@@ -59,7 +64,8 @@ public final class RpRoll extends JavaPlugin {
 	    			return new String[] {Integer.toString(finalRolled),Integer.toString(modifier)}; //final rolled is set out of a
 	    	
 	    }
-	
+
+
 	    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 	    
 	    	
@@ -67,18 +73,18 @@ public final class RpRoll extends JavaPlugin {
 	    		String[] result = null;
 	    		if (args.length == 0){
 	    			result = roll(20, null);
-	    			sender.sendMessage("§a"+sender.getName() + " §erolled a §a" + result[0] + " out of 20");
+	    			server.broadcastMessage("§a"+sender.getName() + " §erolled a §a" + result[0] + " out of 20");
 	    		
 	    		}
 	    		
 	    		if (args.length == 1){
 	    			result = roll(Integer.parseInt(args[0]), null);
-	    			sender.sendMessage("§a"+sender.getName() + " §erolled a §a" + result[0] + " out of " + args[0]);
+	    			server.broadcastMessage("§a"+sender.getName() + " §erolled a §a" + result[0] + " out of " + args[0]);
 	    		}
 	    		
 	    		if (args.length == 2){
 	    			result = roll(Integer.parseInt(args[0]), args[1]);
-	    			sender.sendMessage("§a"+sender.getName() + " §erolled a §a" + result[0] + " out of " + args[0] + " with a modifier of " + args[1]);
+	    			server.broadcastMessage("§a"+sender.getName() + " §erolled a §a" + result[0] + " out of " + args[0] + " with a modifier of " + args[1]);
 	    		}
 	    			    		// doSomething
 	    		return true;

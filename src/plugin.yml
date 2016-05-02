@@ -1,6 +1,6 @@
 name: RpRoll
 main: kingsAndGlory.RpRoll
-version: 0.4.3
+version: 0.4.4
 author: Christian A (Mr. Frog)
 commands:
    roll:
