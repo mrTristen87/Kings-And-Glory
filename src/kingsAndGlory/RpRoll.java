@@ -84,7 +84,7 @@ public final class RpRoll extends JavaPlugin {
 	    		
 	    		if (args.length == 2){
 	    			result = roll(Integer.parseInt(args[0]), args[1]);
-	    			server.broadcastMessage("§a"+sender.getName() + " §erolled a §a" + result[0] + " out of " + args[0] + " with a modifier of " + args[1]);
+	    			server.broadcastMessage("§a"+sender.getName() + " §erolled a §a" + result[0] + " out of " + args[0] + " §ewith a modifier of §a" + args[1]);
 	    		}
 	    			    		// doSomething
 	    		return true;
